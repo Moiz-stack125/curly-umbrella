@@ -1,24 +1,29 @@
-from setuptools import find_packages,setup
+from pathlib import Path
 from typing import List
 
-HYPEN_E_DOT = '-e .'
-# IMPORTANT,DO SOME RESEARCH ABOUT THESE THINGS SEEMS IMPORTANT
-def get_requirements(file_path:str)->List[str]:
-    with open(file_path) as file_obj:
+from setuptools import find_packages, setup
+
+EDITABLE_INSTALL = '-e .'
+
+
+def get_requirements(file_path: str | Path) -> List[str]:
+    with open(file_path, encoding='utf-8') as file_obj:
         requirements = [requirement.strip() for requirement in file_obj]
 
     return [
         requirement
         for requirement in requirements
-        if requirement and requirement != HYPEN_E_DOT
+        if requirement and requirement != EDITABLE_INSTALL
     ]
 
+
+project_root = Path(__file__).resolve().parent
+
 setup(
-    name="mlProject",
+    name="mlproject",
     version="0.0.1",
     author="Moiz",
     author_email="mohdmoiz@gmail.com",
     packages=find_packages(),
-    install_requires=get_requirements('requirements.txt')
-
+    install_requires=get_requirements(project_root / 'requirements.txt'),
 )
