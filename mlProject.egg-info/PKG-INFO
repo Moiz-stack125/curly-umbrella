@@ -1,5 +1,11 @@
-Metadata-Version: 2.1
-Name: mlProject
+Metadata-Version: 2.4
+Name: mlproject
 Version: 0.0.1
 Author: Moiz
 Author-email: mohdmoiz@gmail.com
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: sklearn
+Dynamic: author
+Dynamic: author-email
+Dynamic: requires-dist
